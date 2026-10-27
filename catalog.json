@@ -1,9 +1,44 @@
 {
-  "version": 1,
+  "version": 2,
+  "categories": [
+    {
+      "id": "lofi-chill",
+      "name": "Lofi & chill"
+    },
+    {
+      "id": "cinematic-moody",
+      "name": "Cinematic & moody"
+    },
+    {
+      "id": "abstract-motion",
+      "name": "Abstract & motion"
+    },
+    {
+      "id": "nature-serene",
+      "name": "Nature & serene"
+    },
+    {
+      "id": "urban-lifestyle",
+      "name": "Urban & lifestyle"
+    },
+    {
+      "id": "spiritual-calm",
+      "name": "Spiritual & calm"
+    },
+    {
+      "id": "minimal-clean",
+      "name": "Minimal & clean"
+    },
+    {
+      "id": "occasions",
+      "name": "Occasions"
+    }
+  ],
   "items": [
     {
       "id": "ocean-sunset",
       "name": "Ocean sunset",
+      "category": "nature-serene",
       "type": "photo",
       "file": "photos/ocean-sunset.jpg",
       "thumb": "thumbs/ocean-sunset.jpg",
@@ -13,6 +48,7 @@
     {
       "id": "rose-clouds",
       "name": "Rose clouds",
+      "category": "minimal-clean",
       "type": "photo",
       "file": "photos/rose-clouds.jpg",
       "thumb": "thumbs/rose-clouds.jpg",
@@ -22,6 +58,7 @@
     {
       "id": "bamboo-light",
       "name": "Bamboo light",
+      "category": "nature-serene",
       "type": "photo",
       "file": "photos/bamboo-light.jpg",
       "thumb": "thumbs/bamboo-light.jpg",
@@ -31,6 +68,7 @@
     {
       "id": "drifting-clouds",
       "name": "Drifting clouds",
+      "category": "spiritual-calm",
       "type": "video",
       "file": "videos/drifting-clouds.mp4",
       "thumb": "thumbs/drifting-clouds.jpg",
@@ -41,6 +79,7 @@
     {
       "id": "twinkling-stars",
       "name": "Twinkling stars",
+      "category": "spiritual-calm",
       "type": "video",
       "file": "videos/twinkling-stars.mp4",
       "thumb": "thumbs/twinkling-stars.jpg",
@@ -51,6 +90,7 @@
     {
       "id": "golden-sky",
       "name": "Golden sky",
+      "category": "spiritual-calm",
       "type": "video",
       "file": "videos/golden_sky.mp4",
       "thumb": "thumbs/golden_sky.jpg",
