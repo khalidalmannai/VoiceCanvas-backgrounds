@@ -49,13 +49,13 @@
       "pro": true
     },
     {
-      "id": "golden_sky",
-      "name": "golden sky",
+      "id": "golden-sky",
+      "name": "Golden sky",
       "type": "video",
       "file": "videos/golden_sky.mp4",
       "thumb": "thumbs/golden_sky.jpg",
       "duration": 25,
-      "bytes": 5541888,
+      "bytes": 16933524,
       "pro": true
     }
   ]
