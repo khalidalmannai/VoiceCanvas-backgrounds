@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "ocean-sunset",
+      "name": "Ocean sunset",
+      "type": "photo",
+      "file": "photos/ocean-sunset.jpg",
+      "thumb": "thumbs/ocean-sunset.jpg",
+      "bytes": 200486,
+      "pro": true
+    },
+    {
+      "id": "rose-clouds",
+      "name": "Rose clouds",
+      "type": "photo",
+      "file": "photos/rose-clouds.jpg",
+      "thumb": "thumbs/rose-clouds.jpg",
+      "bytes": 91200,
+      "pro": true
+    },
+    {
+      "id": "bamboo-light",
+      "name": "Bamboo light",
+      "type": "photo",
+      "file": "photos/bamboo-light.jpg",
+      "thumb": "thumbs/bamboo-light.jpg",
+      "bytes": 191402,
+      "pro": true
+    },
+    {
+      "id": "drifting-clouds",
+      "name": "Drifting clouds",
+      "type": "video",
+      "file": "videos/drifting-clouds.mp4",
+      "thumb": "thumbs/drifting-clouds.jpg",
+      "duration": 8,
+      "bytes": 339441,
+      "pro": true
+    },
+    {
+      "id": "twinkling-stars",
+      "name": "Twinkling stars",
+      "type": "video",
+      "file": "videos/twinkling-stars.mp4",
+      "thumb": "thumbs/twinkling-stars.jpg",
+      "duration": 8,
+      "bytes": 279892,
+      "pro": true
+    }
+  ]
+}
