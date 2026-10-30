@@ -1,7 +1,8 @@
 # Builds catalog.json from the folders every time files are added or changed.
 # You never edit catalog.json by hand: upload a photo to photos/<category>/ or a video to
 # videos/<category>/ and this robot updates the list (and makes missing previews) within a
-# minute. See README.md.
+# minute. Every background is marked AI-generated (in the list and inside the files).
+# See README.md.
 name: Build catalog
 
 on:
@@ -23,11 +24,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install ffmpeg (previews and video length)
+      - name: Install ffmpeg and exiftool (previews, video length, AI tags)
         run: |
-          if ! command -v ffprobe >/dev/null; then
-            sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null
-          fi
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg libimage-exiftool-perl >/dev/null
 
       - name: Build catalog.json
         run: |
@@ -45,7 +45,10 @@ jobs:
             catalog.json is kept as long as the file stays where it is.
           * Pro      = every download, unless the file name ends in "-free" / "_free".
           * Files whose names the app can't use (spaces, brackets, accents…) are renamed.
-          Needs ffmpeg/ffprobe (for previews and video length).
+          * Every background is marked AI-generated: "ai": true in the list (the app shows a tag), and a
+            hidden tag inside the photo/video/preview files (IPTC "trainedAlgorithmicMedia", the
+            standard marker for AI-generated media).
+          Needs ffmpeg/ffprobe (previews, video length) and exiftool (hidden tags).
           """
           import json, os, re, subprocess, sys, unicodedata
 
@@ -92,6 +95,22 @@ jobs:
           def pretty(stem):
               s = re.sub(r"[-_]+", " ", stem).strip()
               return s[:1].upper() + s[1:] if s else stem
+
+          AI_SOURCE = "http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia"
+
+          def tag_ai(rel):
+              """Writes the hidden AI-generated tag into a file (lossless; skipped if already there)."""
+              path = os.path.join(ROOT, rel)
+              have = run("exiftool", "-s3", "-XMP-iptcExt:DigitalSourceType", path).stdout.strip()
+              if have == AI_SOURCE:
+                  return
+              cmd = ["exiftool", "-q", "-overwrite_original", "-XMP-iptcExt:DigitalSourceType=" + AI_SOURCE,
+                     "-XMP-dc:Description=AI-generated"]
+              if os.path.splitext(rel)[1].lower() in (".mp4", ".m4v", ".mov"):
+                  cmd.append("-ItemList:Comment=AI-generated")
+              r = run(*(cmd + [path]))
+              log.append(("tagged AI-generated: " if r.returncode == 0 else "COULD NOT tag: ") + rel
+                         + ("" if r.returncode == 0 else " (" + r.stderr.strip()[:120] + ")"))
 
           def duration(path):
               r = run("ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", path)
@@ -169,6 +188,9 @@ jobs:
                               thumb = stem_path + ".jpg"
                               if not make_thumb(os.path.join(ROOT, rel), os.path.join(ROOT, thumb), kind == "video"):
                                   thumb = rel if kind == "photo" else None
+                          tag_ai(rel)
+                          if thumb:
+                              tag_ai(thumb)
                           it = {"id": id_, "name": prev.get("name") or pretty(clean_stem), "category": category,
                                 "type": kind, "file": rel}
                           if thumb:
@@ -179,6 +201,7 @@ jobs:
                                   it["duration"] = d
                           it["bytes"] = os.path.getsize(os.path.join(ROOT, rel))
                           it["pro"] = prev["pro"] if "pro" in prev else not free
+                          it["ai"] = True
                           items.append(it)
               # Categories in the usual order, then any new folders alphabetically.
               seen = {it["category"] for it in items}
