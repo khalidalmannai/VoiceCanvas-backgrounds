@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "generated": "automatically from the folders (see README)",
   "categories": [
     {
       "id": "lofi-chill",
@@ -28,74 +29,585 @@
     {
       "id": "minimal-clean",
       "name": "Minimal & clean"
-    },
-    {
-      "id": "occasions",
-      "name": "Occasions"
     }
   ],
   "items": [
     {
-      "id": "ocean-sunset",
-      "name": "Ocean sunset",
-      "category": "nature-serene",
+      "id": "img-20261029-122420",
+      "name": "Img 20261029 122420",
+      "category": "lofi-chill",
       "type": "photo",
-      "file": "photos/ocean-sunset.jpg",
-      "thumb": "thumbs/ocean-sunset.jpg",
-      "bytes": 200486,
+      "file": "photos/lofi-chill/img_20261029_122420.png",
+      "thumb": "thumbs/lofi-chill/img_20261029_122420.jpg",
+      "bytes": 1698739,
       "pro": true
     },
     {
-      "id": "rose-clouds",
-      "name": "Rose clouds",
+      "id": "img-20261029-122836",
+      "name": "Img 20261029 122836",
+      "category": "lofi-chill",
+      "type": "photo",
+      "file": "photos/lofi-chill/img_20261029_122836.png",
+      "thumb": "thumbs/lofi-chill/img_20261029_122836.jpg",
+      "bytes": 1308389,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-123250",
+      "name": "Img 20261029 123250",
+      "category": "lofi-chill",
+      "type": "photo",
+      "file": "photos/lofi-chill/img_20261029_123250.png",
+      "thumb": "thumbs/lofi-chill/img_20261029_123250.jpg",
+      "bytes": 1462187,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-123703",
+      "name": "Img 20261029 123703",
+      "category": "lofi-chill",
+      "type": "photo",
+      "file": "photos/lofi-chill/img_20261029_123703.png",
+      "thumb": "thumbs/lofi-chill/img_20261029_123703.jpg",
+      "bytes": 1370044,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-124127",
+      "name": "Img 20261029 124127",
+      "category": "lofi-chill",
+      "type": "photo",
+      "file": "photos/lofi-chill/img_20261029_124127.png",
+      "thumb": "thumbs/lofi-chill/img_20261029_124127.jpg",
+      "bytes": 1463531,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-124558",
+      "name": "Img 20261029 124558",
+      "category": "lofi-chill",
+      "type": "photo",
+      "file": "photos/lofi-chill/img_20261029_124558.png",
+      "thumb": "thumbs/lofi-chill/img_20261029_124558.jpg",
+      "bytes": 1732806,
+      "pro": true
+    },
+    {
+      "id": "show-20261030-071543",
+      "name": "Show 20261030 071543",
+      "category": "lofi-chill",
+      "type": "video",
+      "file": "videos/lofi-chill/show_20261030_071543.mp4",
+      "thumb": "thumbs/lofi-chill/show_20261030_071543.jpg",
+      "duration": 27,
+      "bytes": 40645608,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-115406",
+      "name": "Img 20261029 115406",
+      "category": "cinematic-moody",
+      "type": "photo",
+      "file": "photos/cinematic-moody/img_20261029_115406.png",
+      "thumb": "thumbs/cinematic-moody/img_20261029_115406.jpg",
+      "bytes": 2563025,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-115858",
+      "name": "Img 20261029 115858",
+      "category": "cinematic-moody",
+      "type": "photo",
+      "file": "photos/cinematic-moody/img_20261029_115858.png",
+      "thumb": "thumbs/cinematic-moody/img_20261029_115858.jpg",
+      "bytes": 2396697,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-120315",
+      "name": "Img 20261029 120315",
+      "category": "cinematic-moody",
+      "type": "photo",
+      "file": "photos/cinematic-moody/img_20261029_120315.png",
+      "thumb": "thumbs/cinematic-moody/img_20261029_120315.jpg",
+      "bytes": 2493382,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-120813",
+      "name": "Img 20261029 120813",
+      "category": "cinematic-moody",
+      "type": "photo",
+      "file": "photos/cinematic-moody/img_20261029_120813.png",
+      "thumb": "thumbs/cinematic-moody/img_20261029_120813.jpg",
+      "bytes": 2439948,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-121218",
+      "name": "Img 20261029 121218",
+      "category": "cinematic-moody",
+      "type": "photo",
+      "file": "photos/cinematic-moody/img_20261029_121218.png",
+      "thumb": "thumbs/cinematic-moody/img_20261029_121218.jpg",
+      "bytes": 2504769,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-121712",
+      "name": "Img 20261029 121712",
+      "category": "cinematic-moody",
+      "type": "photo",
+      "file": "photos/cinematic-moody/img_20261029_121712.png",
+      "thumb": "thumbs/cinematic-moody/img_20261029_121712.jpg",
+      "bytes": 2500285,
+      "pro": true
+    },
+    {
+      "id": "show-20261030-071409",
+      "name": "Show 20261030 071409",
+      "category": "cinematic-moody",
+      "type": "video",
+      "file": "videos/cinematic-moody/show_20261030_071409.mp4",
+      "thumb": "thumbs/cinematic-moody/show_20261030_071409.jpg",
+      "duration": 27,
+      "bytes": 49960088,
+      "pro": true
+    },
+    {
+      "id": "image-20261029-105531-935917",
+      "name": "Image 20261029 105531 935917",
+      "category": "abstract-motion",
+      "type": "photo",
+      "file": "photos/abstract-motion/image_20261029_105531_935917.png",
+      "thumb": "thumbs/abstract-motion/image_20261029_105531_935917.jpg",
+      "bytes": 1470949,
+      "pro": true
+    },
+    {
+      "id": "image-20261029-110354-317586",
+      "name": "Image 20261029 110354 317586",
+      "category": "abstract-motion",
+      "type": "photo",
+      "file": "photos/abstract-motion/image_20261029_110354_317586.png",
+      "thumb": "thumbs/abstract-motion/image_20261029_110354_317586.jpg",
+      "bytes": 1675031,
+      "pro": true
+    },
+    {
+      "id": "image-20261029-111529-941367",
+      "name": "Image 20261029 111529 941367",
+      "category": "abstract-motion",
+      "type": "photo",
+      "file": "photos/abstract-motion/image_20261029_111529_941367.png",
+      "thumb": "thumbs/abstract-motion/image_20261029_111529_941367.jpg",
+      "bytes": 2034749,
+      "pro": true
+    },
+    {
+      "id": "image-20261029-111931-583872",
+      "name": "Image 20261029 111931 583872",
+      "category": "abstract-motion",
+      "type": "photo",
+      "file": "photos/abstract-motion/image_20261029_111931_583872.png",
+      "thumb": "thumbs/abstract-motion/image_20261029_111931_583872.jpg",
+      "bytes": 1797523,
+      "pro": true
+    },
+    {
+      "id": "image-20261029-112327-505148",
+      "name": "Image 20261029 112327 505148",
+      "category": "abstract-motion",
+      "type": "photo",
+      "file": "photos/abstract-motion/image_20261029_112327_505148.png",
+      "thumb": "thumbs/abstract-motion/image_20261029_112327_505148.jpg",
+      "bytes": 1813072,
+      "pro": true
+    },
+    {
+      "id": "image-20261029-112745-842152",
+      "name": "Image 20261029 112745 842152",
+      "category": "abstract-motion",
+      "type": "photo",
+      "file": "photos/abstract-motion/image_20261029_112745_842152.png",
+      "thumb": "thumbs/abstract-motion/image_20261029_112745_842152.jpg",
+      "bytes": 1806110,
+      "pro": true
+    },
+    {
+      "id": "show-20261030-071203",
+      "name": "Show 20261030 071203",
+      "category": "abstract-motion",
+      "type": "video",
+      "file": "videos/abstract-motion/show_20261030_071203.mp4",
+      "thumb": "thumbs/abstract-motion/show_20261030_071203.jpg",
+      "duration": 27,
+      "bytes": 46475765,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-153645",
+      "name": "Img 20261029 153645",
+      "category": "nature-serene",
+      "type": "photo",
+      "file": "photos/nature-serene/img_20261029_153645.png",
+      "thumb": "thumbs/nature-serene/img_20261029_153645.jpg",
+      "bytes": 2591816,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-153959",
+      "name": "Img 20261029 153959",
+      "category": "nature-serene",
+      "type": "photo",
+      "file": "photos/nature-serene/img_20261029_153959.png",
+      "thumb": "thumbs/nature-serene/img_20261029_153959.jpg",
+      "bytes": 2934451,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-154314",
+      "name": "Img 20261029 154314",
+      "category": "nature-serene",
+      "type": "photo",
+      "file": "photos/nature-serene/img_20261029_154314.png",
+      "thumb": "thumbs/nature-serene/img_20261029_154314.jpg",
+      "bytes": 2734819,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-155138",
+      "name": "Img 20261029 155138",
+      "category": "nature-serene",
+      "type": "photo",
+      "file": "photos/nature-serene/img_20261029_155138.png",
+      "thumb": "thumbs/nature-serene/img_20261029_155138.jpg",
+      "bytes": 2786897,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-155509",
+      "name": "Img 20261029 155509",
+      "category": "nature-serene",
+      "type": "photo",
+      "file": "photos/nature-serene/img_20261029_155509.png",
+      "thumb": "thumbs/nature-serene/img_20261029_155509.jpg",
+      "bytes": 2864702,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-155840",
+      "name": "Img 20261029 155840",
+      "category": "nature-serene",
+      "type": "photo",
+      "file": "photos/nature-serene/img_20261029_155840.png",
+      "thumb": "thumbs/nature-serene/img_20261029_155840.jpg",
+      "bytes": 2712491,
+      "pro": true
+    },
+    {
+      "id": "show-20261030-072025",
+      "name": "Show 20261030 072025",
+      "category": "nature-serene",
+      "type": "video",
+      "file": "videos/nature-serene/show_20261030_072025.mp4",
+      "thumb": "thumbs/nature-serene/show_20261030_072025.jpg",
+      "duration": 27,
+      "bytes": 66309721,
+      "pro": true
+    },
+    {
+      "id": "image-20261028-143120-901268",
+      "name": "Image 20261028 143120 901268",
+      "category": "urban-lifestyle",
+      "type": "photo",
+      "file": "photos/urban-lifestyle/image_20261028_143120_901268.png",
+      "thumb": "thumbs/urban-lifestyle/image_20261028_143120_901268.jpg",
+      "bytes": 469762,
+      "pro": true
+    },
+    {
+      "id": "image-20261028-145900-097995",
+      "name": "Image 20261028 145900 097995",
+      "category": "urban-lifestyle",
+      "type": "photo",
+      "file": "photos/urban-lifestyle/image_20261028_145900_097995.png",
+      "thumb": "thumbs/urban-lifestyle/image_20261028_145900_097995.jpg",
+      "bytes": 813788,
+      "pro": true
+    },
+    {
+      "id": "image-20261028-154513-104001",
+      "name": "Image 20261028 154513 104001",
+      "category": "urban-lifestyle",
+      "type": "photo",
+      "file": "photos/urban-lifestyle/image_20261028_154513_104001.png",
+      "thumb": "thumbs/urban-lifestyle/image_20261028_154513_104001.jpg",
+      "bytes": 875383,
+      "pro": true
+    },
+    {
+      "id": "image-20261028-155035-944580",
+      "name": "Image 20261028 155035 944580",
+      "category": "urban-lifestyle",
+      "type": "photo",
+      "file": "photos/urban-lifestyle/image_20261028_155035_944580.png",
+      "thumb": "thumbs/urban-lifestyle/image_20261028_155035_944580.jpg",
+      "bytes": 2022865,
+      "pro": true
+    },
+    {
+      "id": "image-20261028-155657-435758",
+      "name": "Image 20261028 155657 435758",
+      "category": "urban-lifestyle",
+      "type": "photo",
+      "file": "photos/urban-lifestyle/image_20261028_155657_435758.png",
+      "thumb": "thumbs/urban-lifestyle/image_20261028_155657_435758.jpg",
+      "bytes": 2128337,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-161555",
+      "name": "Img 20261029 161555",
+      "category": "urban-lifestyle",
+      "type": "photo",
+      "file": "photos/urban-lifestyle/img_20261029_161555.png",
+      "thumb": "thumbs/urban-lifestyle/img_20261029_161555.jpg",
+      "bytes": 2147496,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-162010",
+      "name": "Img 20261029 162010",
+      "category": "urban-lifestyle",
+      "type": "photo",
+      "file": "photos/urban-lifestyle/img_20261029_162010.png",
+      "thumb": "thumbs/urban-lifestyle/img_20261029_162010.jpg",
+      "bytes": 2053688,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-162453",
+      "name": "Img 20261029 162453",
+      "category": "urban-lifestyle",
+      "type": "photo",
+      "file": "photos/urban-lifestyle/img_20261029_162453.png",
+      "thumb": "thumbs/urban-lifestyle/img_20261029_162453.jpg",
+      "bytes": 2044400,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-162906",
+      "name": "Img 20261029 162906",
+      "category": "urban-lifestyle",
+      "type": "photo",
+      "file": "photos/urban-lifestyle/img_20261029_162906.png",
+      "thumb": "thumbs/urban-lifestyle/img_20261029_162906.jpg",
+      "bytes": 2137934,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-163424",
+      "name": "Img 20261029 163424",
+      "category": "urban-lifestyle",
+      "type": "photo",
+      "file": "photos/urban-lifestyle/img_20261029_163424.png",
+      "thumb": "thumbs/urban-lifestyle/img_20261029_163424.jpg",
+      "bytes": 2101718,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-163908",
+      "name": "Img 20261029 163908",
+      "category": "urban-lifestyle",
+      "type": "photo",
+      "file": "photos/urban-lifestyle/img_20261029_163908.png",
+      "thumb": "thumbs/urban-lifestyle/img_20261029_163908.jpg",
+      "bytes": 1972070,
+      "pro": true
+    },
+    {
+      "id": "show-20261030-072310",
+      "name": "Show 20261030 072310",
+      "category": "urban-lifestyle",
+      "type": "video",
+      "file": "videos/urban-lifestyle/show_20261030_072310.mp4",
+      "thumb": "thumbs/urban-lifestyle/show_20261030_072310.jpg",
+      "duration": 27,
+      "bytes": 48772891,
+      "pro": true
+    },
+    {
+      "id": "show-20261030-072455",
+      "name": "Show 20261030 072455",
+      "category": "urban-lifestyle",
+      "type": "video",
+      "file": "videos/urban-lifestyle/show_20261030_072455.mp4",
+      "thumb": "thumbs/urban-lifestyle/show_20261030_072455.jpg",
+      "duration": 27,
+      "bytes": 49042534,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-164622",
+      "name": "Img 20261029 164622",
+      "category": "spiritual-calm",
+      "type": "photo",
+      "file": "photos/spiritual-calm/img_20261029_164622.png",
+      "thumb": "thumbs/spiritual-calm/img_20261029_164622.jpg",
+      "bytes": 1782534,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-165030",
+      "name": "Img 20261029 165030",
+      "category": "spiritual-calm",
+      "type": "photo",
+      "file": "photos/spiritual-calm/img_20261029_165030.png",
+      "thumb": "thumbs/spiritual-calm/img_20261029_165030.jpg",
+      "bytes": 1794654,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-165422",
+      "name": "Img 20261029 165422",
+      "category": "spiritual-calm",
+      "type": "photo",
+      "file": "photos/spiritual-calm/img_20261029_165422.png",
+      "thumb": "thumbs/spiritual-calm/img_20261029_165422.jpg",
+      "bytes": 1905535,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-165743",
+      "name": "Img 20261029 165743",
+      "category": "spiritual-calm",
+      "type": "photo",
+      "file": "photos/spiritual-calm/img_20261029_165743.png",
+      "thumb": "thumbs/spiritual-calm/img_20261029_165743.jpg",
+      "bytes": 1775227,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-170107",
+      "name": "Img 20261029 170107",
+      "category": "spiritual-calm",
+      "type": "photo",
+      "file": "photos/spiritual-calm/img_20261029_170107.png",
+      "thumb": "thumbs/spiritual-calm/img_20261029_170107.jpg",
+      "bytes": 1986015,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-170429",
+      "name": "Img 20261029 170429",
+      "category": "spiritual-calm",
+      "type": "photo",
+      "file": "photos/spiritual-calm/img_20261029_170429.png",
+      "thumb": "thumbs/spiritual-calm/img_20261029_170429.jpg",
+      "bytes": 1931035,
+      "pro": true
+    },
+    {
+      "id": "show-20261030-070954",
+      "name": "Show 20261030 070954",
+      "category": "spiritual-calm",
+      "type": "video",
+      "file": "videos/spiritual-calm/show_20261030_070954.mp4",
+      "thumb": "thumbs/spiritual-calm/show_20261030_070954.jpg",
+      "duration": 27,
+      "bytes": 45387434,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-130246",
+      "name": "Img 20261029 130246",
       "category": "minimal-clean",
       "type": "photo",
-      "file": "photos/rose-clouds.jpg",
-      "thumb": "thumbs/rose-clouds.jpg",
-      "bytes": 91200,
+      "file": "photos/minimal-clean/img_20261029_130246.png",
+      "thumb": "thumbs/minimal-clean/img_20261029_130246.jpg",
+      "bytes": 1090574,
       "pro": true
     },
     {
-      "id": "bamboo-light",
-      "name": "Bamboo light",
-      "category": "nature-serene",
+      "id": "img-20261029-142821",
+      "name": "Img 20261029 142821",
+      "category": "minimal-clean",
       "type": "photo",
-      "file": "photos/bamboo-light.jpg",
-      "thumb": "thumbs/bamboo-light.jpg",
-      "bytes": 191402,
+      "file": "photos/minimal-clean/img_20261029_142821.png",
+      "thumb": "thumbs/minimal-clean/img_20261029_142821.jpg",
+      "bytes": 1271412,
       "pro": true
     },
     {
-      "id": "drifting-clouds",
-      "name": "Drifting clouds",
-      "category": "spiritual-calm",
-      "type": "video",
-      "file": "videos/drifting-clouds.mp4",
-      "thumb": "thumbs/drifting-clouds.jpg",
-      "duration": 8,
-      "bytes": 339441,
+      "id": "img-20261029-143641",
+      "name": "Img 20261029 143641",
+      "category": "minimal-clean",
+      "type": "photo",
+      "file": "photos/minimal-clean/img_20261029_143641.png",
+      "thumb": "thumbs/minimal-clean/img_20261029_143641.jpg",
+      "bytes": 1127773,
       "pro": true
     },
     {
-      "id": "twinkling-stars",
-      "name": "Twinkling stars",
-      "category": "spiritual-calm",
-      "type": "video",
-      "file": "videos/twinkling-stars.mp4",
-      "thumb": "thumbs/twinkling-stars.jpg",
-      "duration": 8,
-      "bytes": 279892,
+      "id": "img-20261029-144152",
+      "name": "Img 20261029 144152",
+      "category": "minimal-clean",
+      "type": "photo",
+      "file": "photos/minimal-clean/img_20261029_144152.png",
+      "thumb": "thumbs/minimal-clean/img_20261029_144152.jpg",
+      "bytes": 1433153,
       "pro": true
     },
     {
-      "id": "golden-sky",
-      "name": "Golden sky",
-      "category": "spiritual-calm",
+      "id": "img-20261029-145754",
+      "name": "Img 20261029 145754",
+      "category": "minimal-clean",
+      "type": "photo",
+      "file": "photos/minimal-clean/img_20261029_145754.png",
+      "thumb": "thumbs/minimal-clean/img_20261029_145754.jpg",
+      "bytes": 1375355,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-151528",
+      "name": "Img 20261029 151528",
+      "category": "minimal-clean",
+      "type": "photo",
+      "file": "photos/minimal-clean/img_20261029_151528.png",
+      "thumb": "thumbs/minimal-clean/img_20261029_151528.jpg",
+      "bytes": 1196762,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-152034",
+      "name": "Img 20261029 152034",
+      "category": "minimal-clean",
+      "type": "photo",
+      "file": "photos/minimal-clean/img_20261029_152034.png",
+      "thumb": "thumbs/minimal-clean/img_20261029_152034.jpg",
+      "bytes": 1100517,
+      "pro": true
+    },
+    {
+      "id": "img-20261029-152541",
+      "name": "Img 20261029 152541",
+      "category": "minimal-clean",
+      "type": "photo",
+      "file": "photos/minimal-clean/img_20261029_152541.png",
+      "thumb": "thumbs/minimal-clean/img_20261029_152541.jpg",
+      "bytes": 1255675,
+      "pro": true
+    },
+    {
+      "id": "show-20261030-071742",
+      "name": "Show 20261030 071742",
+      "category": "minimal-clean",
       "type": "video",
-      "file": "videos/golden_sky.mp4",
-      "thumb": "thumbs/golden_sky.jpg",
-      "duration": 25,
-      "bytes": 16933524,
+      "file": "videos/minimal-clean/show_20261030_071742.mp4",
+      "thumb": "thumbs/minimal-clean/show_20261030_071742.jpg",
+      "duration": 36,
+      "bytes": 41827241,
       "pro": true
     }
   ]
