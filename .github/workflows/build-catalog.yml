@@ -1,0 +1,213 @@
+# Builds catalog.json from the folders every time files are added or changed.
+# You never edit catalog.json by hand: upload a photo to photos/<category>/ or a video to
+# videos/<category>/ and this robot updates the list (and makes missing previews) within a
+# minute. See README.md.
+name: Build catalog
+
+on:
+  push:
+    branches: [main]
+    paths: ["photos/**", "videos/**", "thumbs/**", "catalog.json", ".github/workflows/build-catalog.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-catalog
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install ffmpeg (previews and video length)
+        run: |
+          if ! command -v ffprobe >/dev/null; then
+            sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null
+          fi
+
+      - name: Build catalog.json
+        run: |
+          python3 - . <<'PY'
+          #!/usr/bin/env python3
+          """Builds catalog.json for the Voice Canvas app from the folders of this repository.
+
+              photos/<category>/<name>.jpg|.jpeg|.png|.webp   → photo backgrounds
+              videos/<category>/<name>.mp4|.m4v|.mov|.webm    → video backgrounds
+              thumbs/<category>/<name>.jpg                    → preview (made automatically if missing)
+
+          * category = the folder name (files directly in photos/ or videos/ keep the category they
+            already had in catalog.json, otherwise "other").
+          * name     = from the file name ("golden_sky" → "Golden sky"); a name or "pro" edited in
+            catalog.json is kept as long as the file stays where it is.
+          * Pro      = every download, unless the file name ends in "-free" / "_free".
+          * Files whose names the app can't use (spaces, brackets, accents…) are renamed.
+          Needs ffmpeg/ffprobe (for previews and video length).
+          """
+          import json, os, re, subprocess, sys, unicodedata
+
+          ROOT = os.path.abspath(sys.argv[1] if len(sys.argv) > 1 else ".")
+          PHOTO_EXT = {".jpg", ".jpeg", ".png", ".webp"}
+          VIDEO_EXT = {".mp4", ".m4v", ".mov", ".webm"}
+          THUMB_EXT = [".jpg", ".jpeg", ".png", ".webp"]
+          SAFE_PATH = re.compile(r"[A-Za-z0-9_./-]{1,200}")
+          SAFE_ID = re.compile(r"[a-z0-9][a-z0-9-]{0,60}")
+          NAMES = {  # category folder → name shown in the app (others: from the folder name)
+              "lofi-chill": "Lofi & chill", "cinematic-moody": "Cinematic & moody",
+              "abstract-motion": "Abstract & motion", "nature-serene": "Nature & serene",
+              "urban-lifestyle": "Urban & lifestyle", "spiritual-calm": "Spiritual & calm",
+              "minimal-clean": "Minimal & clean", "occasions": "Occasions", "other": "Other",
+          }
+          log = []
+
+          def run(*cmd):
+              return subprocess.run(cmd, capture_output=True, text=True)
+
+          def safe_name(name):
+              """'Golden Sky (2).MP4' → 'Golden-Sky-2.mp4' (letters, digits, - _ . only)."""
+              base, ext = os.path.splitext(name)
+              base = unicodedata.normalize("NFKD", base).encode("ascii", "ignore").decode()
+              base = re.sub(r"[^A-Za-z0-9_.-]+", "-", base).strip("-.") or "background"
+              return base + ext.lower()
+
+          def rename(rel, new_rel):
+              """git mv when inside a git checkout, plain rename otherwise."""
+              src, dst = os.path.join(ROOT, rel), os.path.join(ROOT, new_rel)
+              if os.path.exists(dst):
+                  b, e = os.path.splitext(new_rel); k = 2
+                  while os.path.exists(os.path.join(ROOT, f"{b}-{k}{e}")): k += 1
+                  new_rel = f"{b}-{k}{e}"; dst = os.path.join(ROOT, new_rel)
+              if run("git", "-C", ROOT, "mv", rel, new_rel).returncode != 0:
+                  os.rename(src, dst)
+              log.append(f"renamed {rel} → {new_rel}")
+              return new_rel
+
+          def slug(s):
+              s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode().lower()
+              return re.sub(r"[^a-z0-9]+", "-", s).strip("-")[:60] or "bg"
+
+          def pretty(stem):
+              s = re.sub(r"[-_]+", " ", stem).strip()
+              return s[:1].upper() + s[1:] if s else stem
+
+          def duration(path):
+              r = run("ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", path)
+              try:
+                  return round(float(r.stdout.strip()))
+              except ValueError:
+                  return None
+
+          def make_thumb(src, dst, video):
+              os.makedirs(os.path.dirname(dst), exist_ok=True)
+              vf = "scale=270:480:force_original_aspect_ratio=increase,crop=270:480"
+              cmd = ["ffmpeg", "-v", "error", "-y"] + (["-ss", "1"] if video else []) + ["-i", src, "-frames:v", "1", "-vf", vf, "-q:v", "4", dst]
+              ok = run(*cmd).returncode == 0 and os.path.exists(dst)
+              if not ok and video:  # very short video: take the first frame
+                  ok = run("ffmpeg", "-v", "error", "-y", "-i", src, "-frames:v", "1", "-vf", vf, "-q:v", "4", dst).returncode == 0
+              log.append(("made preview " if ok else "COULD NOT make preview ") + os.path.relpath(dst, ROOT))
+              return ok
+
+          def main():
+              cat_path = os.path.join(ROOT, "catalog.json")
+              old = {}
+              if os.path.exists(cat_path):
+                  try:
+                      old = json.load(open(cat_path, encoding="utf-8"))
+                  except ValueError as e:
+                      log.append(f"old catalog.json was not valid JSON ({e}); starting fresh")
+              by_file = {it.get("file"): it for it in old.get("items", []) if isinstance(it, dict)}
+              used_ids = set()
+              items = []
+              for kind, exts in (("photo", PHOTO_EXT), ("video", VIDEO_EXT)):
+                  top = "photos" if kind == "photo" else "videos"
+                  base = os.path.join(ROOT, top)
+                  if not os.path.isdir(base):
+                      continue
+                  for dirpath, dirnames, filenames in os.walk(base):
+                      dirnames.sort()
+                      for fn in sorted(filenames):
+                          if fn.startswith(".") or os.path.splitext(fn)[1].lower() not in exts:
+                              continue
+                          rel = os.path.relpath(os.path.join(dirpath, fn), ROOT).replace(os.sep, "/")
+                          # Folders deeper than photos/<category>/ count as their first folder.
+                          parts = rel.split("/")
+                          category = parts[1] if len(parts) > 2 else None
+                          if not SAFE_PATH.fullmatch(rel) or ".." in rel:
+                              rel = rename(rel, "/".join(parts[:-1] + [safe_name(parts[-1])]))
+                              parts = rel.split("/")
+                          prev = by_file.get(rel, {})
+                          stem = os.path.splitext(parts[-1])[0]
+                          free = bool(re.search(r"[-_]free$", stem, re.I))
+                          clean_stem = re.sub(r"[-_]free$", "", stem, flags=re.I)
+                          if category is None:
+                              category = prev.get("category") or "other"
+                          category = slug(category)
+                          # Stable id: keep the old one for the same file; otherwise from the file name.
+                          id_ = prev.get("id") if SAFE_ID.fullmatch(str(prev.get("id", ""))) else None
+                          if not id_:
+                              id_ = slug(clean_stem)
+                              if id_ in used_ids:
+                                  id_ = slug(f"{category}-{clean_stem}")
+                              k = 2
+                              while id_ in used_ids:
+                                  id_ = f"{slug(clean_stem)}-{k}"; k += 1
+                          used_ids.add(id_)
+                          # Preview: thumbs/<same folders>/<same name>.jpg (or the one the catalog named).
+                          thumb = None
+                          stem_path = "thumbs/" + "/".join(parts[1:-1] + [stem])
+                          for e in THUMB_EXT:
+                              if os.path.exists(os.path.join(ROOT, stem_path + e)):
+                                  thumb = stem_path + e; break
+                          if not thumb and prev.get("thumb") and os.path.exists(os.path.join(ROOT, prev["thumb"])):
+                              thumb = prev["thumb"]
+                          if thumb and not SAFE_PATH.fullmatch(thumb):
+                              thumb = rename(thumb, os.path.dirname(thumb) + "/" + safe_name(os.path.basename(thumb)))
+                          if not thumb:
+                              thumb = stem_path + ".jpg"
+                              if not make_thumb(os.path.join(ROOT, rel), os.path.join(ROOT, thumb), kind == "video"):
+                                  thumb = rel if kind == "photo" else None
+                          it = {"id": id_, "name": prev.get("name") or pretty(clean_stem), "category": category,
+                                "type": kind, "file": rel}
+                          if thumb:
+                              it["thumb"] = thumb
+                          if kind == "video":
+                              d = duration(os.path.join(ROOT, rel))
+                              if d:
+                                  it["duration"] = d
+                          it["bytes"] = os.path.getsize(os.path.join(ROOT, rel))
+                          it["pro"] = prev["pro"] if "pro" in prev else not free
+                          items.append(it)
+              # Categories in the usual order, then any new folders alphabetically.
+              seen = {it["category"] for it in items}
+              order = [c for c in NAMES if c in seen] + sorted(c for c in seen if c not in NAMES)
+              old_names = {c.get("id"): c.get("name") for c in old.get("categories", []) if isinstance(c, dict)}
+              cats = [{"id": c, "name": old_names.get(c) or NAMES.get(c) or pretty(c)} for c in order]
+              items.sort(key=lambda it: (order.index(it["category"]), it["type"], it["name"].lower()))
+              out = {"version": 2, "generated": "automatically from the folders (see README)", "categories": cats, "items": items}
+              new_text = json.dumps(out, indent=2, ensure_ascii=False) + "\n"
+              old_text = open(cat_path, encoding="utf-8").read() if os.path.exists(cat_path) else ""
+              if new_text != old_text:
+                  open(cat_path, "w", encoding="utf-8").write(new_text)
+                  log.append(f"catalog.json updated: {len(items)} backgrounds in {len(cats)} categories")
+              else:
+                  log.append("catalog.json already up to date")
+              print("\n".join(log))
+
+          if __name__ == "__main__":
+              main()
+          PY
+
+      - name: Save changes
+        run: |
+          git config user.name "catalog-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Nothing changed."
+          else
+            git commit -m "Update catalog.json from folders"
+            git push
+          fi
