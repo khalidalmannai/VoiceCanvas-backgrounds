@@ -62,7 +62,7 @@ jobs:
               "lofi-chill": "Lofi & chill", "cinematic-moody": "Cinematic & moody",
               "abstract-motion": "Abstract & motion", "nature-serene": "Nature & serene",
               "urban-lifestyle": "Urban & lifestyle", "spiritual-calm": "Spiritual & calm",
-              "minimal-clean": "Minimal & clean", "occasions": "Occasions", "other": "Other",
+              "minimal-clean": "Minimal & clean", "other": "Other",
           }
           log = []
 
