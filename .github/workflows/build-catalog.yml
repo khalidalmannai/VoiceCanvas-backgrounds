@@ -70,7 +70,7 @@ jobs:
               return subprocess.run(cmd, capture_output=True, text=True)
 
           def safe_name(name):
-              """ 'Golden Sky (2).MP4' → 'Golden-Sky-2.mp4' (letters, digits, - _ . only)."""
+              """'Golden Sky (2).MP4' → 'Golden-Sky-2.mp4' (letters, digits, - _ . only)."""
               base, ext = os.path.splitext(name)
               base = unicodedata.normalize("NFKD", base).encode("ascii", "ignore").decode()
               base = re.sub(r"[^A-Za-z0-9_.-]+", "-", base).strip("-.") or "background"
